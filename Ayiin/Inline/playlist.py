@@ -60,7 +60,7 @@ def play_genre_playlist(user_id, type, videoid):
         ],
         [
             InlineKeyboardButton(
-                text="❮❮ Kebali",
+                text="❮ Kembali",
                 callback_data=f"main_playlist {videoid}|{type}|{user_id}",
             ),
             InlineKeyboardButton(text="🔒 Tutup", callback_data="close"),
