@@ -592,7 +592,7 @@ async def playout_end(pytgclients, chat_id):
                     except:
                         return await app.send_message(
                             chat_id,
-                            "Some Error occured while switching video stream. Playout is on hold now. Please skip the stream to resume the voice chat.",
+                            "Beberapa Kesalahan terjadi saat beralih aliran video. Playout ditunda sekarang. Lewati streaming untuk melanjutkan obrolan suara.",
                         )
                     theme = await check_theme(chat_id)
                     c_title = db_mem[afk]["chat_title"]
@@ -626,7 +626,7 @@ async def playout_end(pytgclients, chat_id):
             else:
                 mystic = await app.send_message(
                     chat_id,
-                    "**Playlist Function**\n\n__Downloading Next Music From Playlist....__",
+                    "**Playlist Function**\n\n__Mengunduh Musik Berikutnya Dari Daftar Putar....__",
                 )
                 (
                     title,
