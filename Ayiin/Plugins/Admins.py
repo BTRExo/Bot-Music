@@ -37,29 +37,29 @@ __HELP__ = """
 
 
 /pause
-- Pause the playing music on voice chat.
+- Jeda musik yang diputar di obrolan suara.
 
 /resume
-- Resume the paused music on voice chat.
+- Lanjutkan musik yang dijeda di obrolan suara.
 
 /skip
-- Skip the current playing music on voice chat
+- Lewati musik yang sedang diputar di obrolan suara
 
 /end or /stop
-- Stop the playout.
+- Hentikan pemutaran.
 
 /queue
-- Check queue list.
+- Periksa daftar antrian.
 
 
 **Note:**
-Only for Sudo Users
+Hanya untuk Pengguna Sudo
 
 /activevc
-- Check active voice chats on bot.
+- Periksa obrolan suara aktif di bot.
 
 /activevideo
-- Check active video calls on bot.
+- Periksa panggilan video aktif di bot.
 """
 
 
@@ -72,13 +72,13 @@ Only for Sudo Users
 async def admins(_, message: Message):
     global get_queue
     if not len(message.command) == 1:
-        return await message.reply_text("Error! Wrong Usage of Command.")
+        return await message.reply_text("Error! Penggunaan Perintah yang Salah.")
     if not await is_active_chat(message.chat.id):
-        return await message.reply_text("Nothing is playing on voice chat.")
+        return await message.reply_text("Tidak ada yang diputar di obrolan suara.")
     chat_id = message.chat.id
     if message.command[0][1] == "a":
         if not await is_music_playing(message.chat.id):
-            return await message.reply_text("Music is already Paused.")
+            return await message.reply_text("Musik sudah Dijeda.")
         await music_off(chat_id)
         await pause_stream(chat_id)
         await message.reply_text(
@@ -86,7 +86,7 @@ async def admins(_, message: Message):
         )
     if message.command[0][1] == "e":
         if await is_music_playing(message.chat.id):
-            return await message.reply_text("Music is already Playing.")
+            return await message.reply_text("Musik sudah Diputar.")
         await music_on(chat_id)
         await resume_stream(chat_id)
         await message.reply_text(
@@ -117,7 +117,7 @@ async def admins(_, message: Message):
             await remove_active_chat(chat_id)
             await remove_active_video_chat(chat_id)
             await message.reply_text(
-                "No more music in __Queue__ \n\nLeaving Voice Chat"
+                "Tidak ada lagi musik di __Queue__ \n\nKeluar dari Obrolan Suara"
             )
             await stop_stream(chat_id)
             return
@@ -175,7 +175,7 @@ async def admins(_, message: Message):
                 )
             elif str(finxx) == "s1s":
                 mystic = await message.reply_text(
-                    "Skipped.. Changing to next Video Stream."
+                    "Skipped.. Mengubah ke Aliran Video berikutnya."
                 )
                 afk = videoid
                 read = (str(videoid)).replace("s1s_", "", 1)
@@ -187,7 +187,7 @@ async def admins(_, message: Message):
                         await skip_video_stream(chat_id, videoid, 720, mystic)
                     except Exception as e:
                         return await mystic.edit(
-                            f"Error while changing video stream.\n\nPossible Reason:- {e}"
+                            f"Error saat mengubah aliran video.\n\nKemungkinan Alasan:- {e}"
                         )
                     buttons = secondary_markup2("Smex1", message.from_user.id)
                     mention = db_mem[afk]["username"]
@@ -210,7 +210,7 @@ async def admins(_, message: Message):
                     nrs, ytlink = await get_m3u8(videoid)
                     if nrs == 0:
                         return await mystic.edit(
-                            "Failed to fetch Video Formats.",
+                            "Gagal mengambil Format Video.",
                         )
                     try:
                         await skip_video_stream(
@@ -218,7 +218,7 @@ async def admins(_, message: Message):
                         )
                     except Exception as e:
                         return await mystic.edit(
-                            f"Error while changing video stream.\n\nPossible Reason:- {e}"
+                            f"Error saat mengubah aliran video.\n\nKemungkinan Alasan:- {e}"
                         )
                     theme = await check_theme(chat_id)
                     c_title = message.chat.title
@@ -252,7 +252,7 @@ async def admins(_, message: Message):
                     )
             else:
                 mystic = await message.reply_text(
-                    f"**{MUSIC_BOT_NAME} Playlist Function**\n\n__Downloading Next Music From Playlist....__"
+                    f"**{MUSIC_BOT_NAME} Playlist Function**\n\n__Mengunduh Musik Berikutnya Dari Daftar Putar....__"
                 )
                 (
                     title,
