@@ -12,13 +12,13 @@ def logging(mystic):
                 chatusername = "Private Group"
             try:
                 query = message.text.split(None, 1)[1]
-                what = "Query Given"
+                what = "Kueri Diberikan"
             except:
                 try:
                     if not message.reply_to_message:
-                        what = "Command Given Only"
+                        what = "Perintah yang Diberikan Saja"
                     else:
-                        what = "Replied to any file."
+                        what = "Membalas file apa pun."
                 except:
                     what = "Command"
             logger_text = f"""
