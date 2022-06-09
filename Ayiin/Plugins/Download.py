@@ -22,13 +22,13 @@ __MODULE__ = "Global Ban"
 __HELP__ = """
 
 **Note:**
-Only for Sudo Users.
+Hanya untuk Pengguna Sudo.
 
-/gban [Username or Reply to a user]
-- Ban a user globally in Bot's Served Chats and prevents user from using bot commands.
+/gban [Username atau Balas ke pengguna]
+- Larang pengguna secara global di Obrolan yang Dilayani Bot dan cegah pengguna menggunakan perintah bot.
 
-/ungban [Username or Reply to a user]
-- Remove a user from Bot's GBan List.
+/ungban [Username atau Balas ke pengguna]
+- Hapus pengguna dari Daftar GBan Bot.
 """
 
 
@@ -83,15 +83,15 @@ def inl_mark(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="Download or Upload Failed......", callback_data=f"down"
+                text="Download atau Upload Gagal......", callback_data=f"down"
             )
         ],
         [
             InlineKeyboardButton(
-                text="❮ Gᴏ Bᴀᴄᴋ​", callback_data=f"good {videoid}|{user_id}"
+                text="❮ Kembali", callback_data=f"good {videoid}|{user_id}"
             ),
             InlineKeyboardButton(
-                text="•Cʟᴏsᴇ•​", callback_data=f"close2"
+                text="🔒 Tutup", callback_data=f"close2"
             ),
         ],
     ]
@@ -109,7 +109,7 @@ async def boom(_, CallbackQuery):
     user_id = CallbackQuery.from_user.id
     type, format_id, videoid = callback_request.split("||")
     mystic = await CallbackQuery.edit_message_text(
-        "Download Started\n\nDownloading speed could be slow. Please hold on..",
+        "Unduhan Dimulai\n\nKecepatan pengunduhan mungkin lambat. Mohon tunggu sebentar..",
         reply_markup=inl,
     )
     yturl = f"https://www.youtube.com/watch?v={videoid}"
@@ -245,7 +245,7 @@ async def send_file(
     CallbackQuery, med, filename, videoid, user_id, link, channel
 ):
     await CallbackQuery.edit_message_text(
-        "Upload Started\n\nUploading speed could be slow. Please hold on..",
+        "Pengunggahan Dimulai\n\nKecepatan pengunggahan mungkin lambat. Mohon tunggu sebentar..",
         reply_markup=upl,
     )
     try:
