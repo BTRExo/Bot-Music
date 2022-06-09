@@ -12,10 +12,10 @@ __MODULE__ = "Lyrics"
 __HELP__ = """
 
 /Lyrics [Music Name]
-- Searches Lyrics for the particular Music on web.
+- Mencari Lirik untuk Musik tertentu di web.
 
 **Note**:
-Inline button of Lyrics has some bugs. Searches only 50% results. You can use command instead if you want lyrics for any playing music.
+Tombol inline Lirik memiliki beberapa bug. Pencarian hanya 50% berhasil. Anda dapat menggunakan perintah sebagai gantinya jika Anda ingin lirik untuk musik apa pun yang diputar.
 
 """
 
@@ -28,7 +28,7 @@ async def lyricssex(_, CallbackQuery):
         id, user_id = callback_request.split("|")
     except Exception as e:
         return await CallbackQuery.message.edit(
-            f"Error Occured\n**Possible reason could be**:{e}"
+            f"Error Terjadi\n**Kemungkinan alasannya bisa jadi**:{e}"
         )
     url = f"https://www.youtube.com/watch?v={id}"
     print(url)
@@ -38,7 +38,7 @@ async def lyricssex(_, CallbackQuery):
             title = result["title"]
     except Exception as e:
         return await CallbackQuery.answer(
-            "Sound not found. Youtube issues.", show_alert=True
+            "Suara tidak ditemukan. masalah youtube.", show_alert=True
         )
     x = "OXaVabSRKQLqwpiYOn-E4Y7k3wj-TNdL5RfDPXlnXhCErbcqVvdCF-WnMR5TBctI"
     y = lyricsgenius.Genius(x)
@@ -47,7 +47,7 @@ async def lyricssex(_, CallbackQuery):
     S = y.search_song(t, get_full_info=False)
     if S is None:
         return await CallbackQuery.answer(
-            "Lyrics not found :p", show_alert=True
+            "Lyrics tidak ditemukan :p", show_alert=True
         )
     await CallbackQuery.message.delete()
     userid = CallbackQuery.from_user.id
