@@ -33,8 +33,8 @@ __HELP__ = """
 
 
 /stats
-- Check the Stats of Bot.
-- Gets the stat of MongoDb , Assistant, System etc
+- Periksa Statistik Bot.
+- Dapatkan status MongoDb, Asisten, Sistem, dll
 """
 
 
